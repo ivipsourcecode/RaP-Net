@@ -6,6 +6,7 @@ RaP-Net apply **R**egion-wise weight, reflecting the semantic static attribute, 
 > Dongjiang Li, Jinyu Miao, Xuesong Shi, Yuxin Tian, Qiwei Long, Ping Guo, Hongfei Yu, Wei Yang, Haosong Yue, Qi Wei, Fei Qiao, "RaP-Net: A Region-wise and Point-wise Weighting Network to Extract Robust Keypoints for Indoor Localization," 
 > ```
 
+If you use RaP-net in an academic work, please cite:
 ```
 @InProceedings{li2020rapnet,
   author = {Dongjiang, Li and Jinyu, Miao and Xuesong, Shi and Yuxin, Tian and Qiwei, Long and Ping, Guo and Hongfei, Yu and Wei, Yang and Haosong, Yue and Qi, Wei and Fei, Qiao},
