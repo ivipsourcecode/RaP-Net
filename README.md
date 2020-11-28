@@ -45,7 +45,7 @@ We train the basenet and region-wise weight in RaP-Net separately. The related c
 
 ## 4. Inference
 
-`extract_features.py` can be used to extract D2 features for a given list of images. The output format can be either [`npz`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.savez.html) or `mat`. In either case, the feature files encapsulate three arrays: 
+`extract_features.py` can be used to extract RaP-Net features for a given list of images. The output format can be either [`npz`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.savez.html) or `mat`. In either case, the feature files encapsulate three arrays: 
 
 > \- `keypoints` [`N x 3`] array containing the positions of keypoints `x, y` and the scales `s`. The positions follow the COLMAP format, with the `X` axis pointing to the right and the `Y` axis to the bottom.
 >
