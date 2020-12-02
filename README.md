@@ -1,18 +1,18 @@
 # RaP-Net
 
-RaP-Net apply **R**egion-wise weight, reflecting the semantic static attribute, to re-weight **P**oint-wise  reliability of each pixel and extract local features for robust indoor localization. Technical details are described in [this paper]() (submit to ICRA 2021)
+RaP-Net apply **R**egion-wise weight, reflecting the semantic static attribute, to re-weight **P**oint-wise  reliability of each pixel and extract local features for robust indoor localization. Technical details are described in [this paper](https://arxiv.org/abs/2012.00234) (submit to ICRA 2021)
 
 > ```
-> Dongjiang Li, Jinyu Miao, Xuesong Shi, Yuxin Tian, Qiwei Long, Ping Guo, Hongfei Yu, Wei Yang, Haosong Yue, Qi Wei, Fei Qiao, "RaP-Net: A Region-wise and Point-wise Weighting Network to Extract Robust Keypoints for Indoor Localization," 
+> Dongjiang Li, Jinyu Miao, Xuesong Shi, Yuxin Tian, Qiwei Long, Ping Guo, Hongfei Yu, Wei Yang, Haosong Yue, Qi Wei, Fei Qiao, "RaP-Net: A Region-wise and Point-wise Weighting Network to Extract Robust Keypoints for Indoor Localization," arXiv preprint arXiv:2012.00234, 2020.
 > ```
 
 If you use RaP-net in an academic work, please cite:
 ```
-@InProceedings{li2020rapnet,
-  author = {Dongjiang, Li and Jinyu, Miao and Xuesong, Shi and Yuxin, Tian and Qiwei, Long and Ping, Guo and Hongfei, Yu and Wei, Yang and Haosong, Yue and Qi, Wei and Fei, Qiao},
-  title = {{RaP-Net: A Region-wise and Point-wise Weighting Network to Extract Robust Keypoints for Indoor Localization}},
-  journal={},
-  year = {2020},
+@article{li2020rapnet,
+      title={RaP-Net: A Region-wise and Point-wise Weighting Network to Extract Robust Keypoints for Indoor Localization}, 
+      author={Dongjiang Li and Jinyu Miao and Xuesong Shi and Yuxin Tian and Qiwei Long and Ping Guo and Hongfei Yu and Wei Yang and Haosong Yue and Qi Wei and Fei Qiao},
+      journal={arXiv preprint arXiv:2012.00234},
+      year={2020}
 }
 ```
 
