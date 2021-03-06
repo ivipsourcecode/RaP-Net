@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from lib.model import RegionWeight
+# from lib.model import RegionWeight
 
 
 class DenseFeatureExtractionModule(nn.Module):
@@ -41,6 +41,44 @@ class DenseFeatureExtractionModule(nn.Module):
         if self.use_relu:
             output = F.relu(output)
         return output
+    
+    
+class RegionWeight(torch.nn.Module):
+    def __init__(self, in_channel):
+        super(RegionWeight, self).__init__()
+        # branch 0
+        self.branch_0 = torch.nn.Conv2d(in_channel, 32, kernel_size=(3, 3), stride=1, padding=1, bias=False)
+        self.norm_0 = torch.nn.BatchNorm2d(32, affine=True)
+        # branch 1
+        self.branch_1 = torch.nn.Conv2d(in_channel, 32, kernel_size=(5, 5), stride=1, padding=2, bias=False)
+        self.norm_1 = torch.nn.BatchNorm2d(32, affine=True)
+        # branch 2
+        self.branch_2 = torch.nn.Conv2d(in_channel, 32, kernel_size=(7, 7), stride=1, padding=3, bias=False)
+        self.norm_2 = torch.nn.BatchNorm2d(32, affine=True)
+        # activation
+        self.relu = torch.nn.ReLU(inplace=True)
+        self.softplus = torch.nn.Softplus()
+        # score
+        self.attention_score = torch.nn.Conv2d(96, 1, kernel_size=(1, 1), stride=1, padding=0)
+    
+    def forward(self, x):
+        # down sampling
+        x = torch.nn.functional.max_pool2d(x, kernel_size=3, stride=2, padding=1)
+        x = torch.nn.functional.avg_pool2d(x, kernel_size=3, stride=1, padding=1)
+
+        branch_0 = self.relu(self.norm_0(self.branch_0(x)))
+        branch_1 = self.relu(self.norm_1(self.branch_1(x)))
+        branch_2 = self.relu(self.norm_2(self.branch_2(x)))
+
+        fusion = torch.cat([branch_0, branch_1, branch_2], 1)
+
+        # score = torch.nn.functional.relu(self.softplus(self.attention_score(fusion)))
+        score = self.softplus(self.attention_score(fusion))
+
+        # recover resolution
+        score = torch.nn.functional.upsample_nearest(score, scale_factor=2)
+        
+        return score
 
 
 class RaPNet(nn.Module):
